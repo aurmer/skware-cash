@@ -25,19 +25,19 @@ function renderTransactions(transactions) {
 
 //*******************************************************
 //   Displays the full transaction list on page load
-//   Listens for keyboard input to filter the list of 
-//   transactions based on the search string. 
+//   Listens for keyboard input to filter the list of
+//   transactions based on the search string.
 //*******************************************************
 document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById('transactions').innerHTML = renderTransactions(fullTransactionData);
 
 	document.getElementById('search-input').addEventListener('input', function (e) {
-		var searchString = e.target.value;
+		var searchString = e.target.value.toLowerCase();
 		var filteredData = fullTransactionData.filter(function (transaction) {
-			var foundInName = transaction.name.indexOf(searchString) > -1;
-			var foundInFor = transaction.for.indexOf(searchString) > -1;
-			var foundInDate = transaction.date.indexOf(searchString) > -1;
-			var foundInAmount = transaction.amount.indexOf(searchString) > -1;
+			var foundInName = transaction.name.toLowerCase().indexOf(searchString) > -1;
+			var foundInFor = transaction.for.toLowerCase().indexOf(searchString) > -1;
+			var foundInDate = transaction.date.toLowerCase().indexOf(searchString) > -1;
+			var foundInAmount = transaction.amount.toLowerCase().indexOf(searchString) > -1;
 			return foundInName || foundInFor || foundInDate || foundInAmount;
 		});
 
